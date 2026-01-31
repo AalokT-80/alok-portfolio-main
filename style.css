@@ -90,13 +90,13 @@ a:hover {
     color: var(--text-primary);
 }
 
-/* Canvas — quiet background texture */
+/* Canvas — subtle background texture */
 #neural-canvas {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.25;
+    opacity: 0.4;
 }
 
 /* Accessibility */
@@ -751,22 +751,21 @@ footer p {
 @media (max-width: 768px) {
     
     /* ─────────────────────────────────────────────
-       Navigation — Fixed bottom bar
+       Navigation — Fixed bottom bar with icons
     ───────────────────────────────────────────── */
     .nav-links {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-        background: rgba(24, 24, 27, 0.97);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-top: 1px solid var(--border-subtle);
-        padding: 0.5rem 0;
+        background: rgba(24, 24, 27, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 0.375rem 0 calc(0.375rem + env(safe-area-inset-bottom, 0px));
         display: flex;
         justify-content: space-around;
         z-index: 1000;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
     }
     
     .nav-links li {
@@ -776,9 +775,19 @@ footer p {
     
     .nav-links a {
         font-size: 0.625rem;
-        padding: 0.75rem 0.25rem;
-        display: block;
+        padding: 0.75rem 0.375rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
         color: var(--text-tertiary);
+        transition: color 0.15s ease;
+        min-height: 44px;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a:active {
+        color: var(--text-primary);
     }
     
     .nav-links a::after {
@@ -791,18 +800,18 @@ footer p {
 
     main {
         padding-top: 52px;
-        padding-bottom: 60px; /* Space for bottom nav */
+        padding-bottom: 70px;
     }
 
     /* ─────────────────────────────────────────────
        Hero — Bold, confident, immediate impact
     ───────────────────────────────────────────── */
     .hero {
-        min-height: calc(100vh - 112px);
-        min-height: calc(100svh - 112px); /* Safe viewport height */
+        min-height: calc(100vh - 122px);
+        min-height: calc(100svh - 122px);
         padding: 0 1.5rem;
-        padding-top: 2.5rem;
-        padding-bottom: 2rem;
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -813,42 +822,53 @@ footer p {
     }
 
     h1 {
-        font-size: 2.25rem;
-        margin-bottom: 0.25rem;
-        letter-spacing: -0.035em;
-        line-height: 1.1;
+        font-size: 2.5rem;
+        margin-bottom: 0.125rem;
+        letter-spacing: -0.04em;
+        line-height: 1.05;
     }
 
     .hero-tagline {
-        font-size: 1.0625rem;
-        margin-bottom: 1.5rem;
-        opacity: 0.9;
+        font-size: 1rem;
+        margin-bottom: 1.75rem;
+        color: var(--text-tertiary);
+        font-weight: 400;
     }
     
     .hero-intro {
         font-size: 1rem;
-        line-height: 1.7;
-        margin-bottom: 0.5rem;
+        line-height: 1.65;
+        margin-bottom: 0.375rem;
         color: var(--text-secondary);
-        max-width: 100%;
     }
     
     .hero-intro + .hero-intro {
         margin-bottom: 0;
+        color: var(--text-tertiary);
+        font-size: 0.9375rem;
     }
     
     .hero-status {
-        margin-top: 1.5rem;
-        font-size: 0.75rem;
-        padding: 0.5rem 0.75rem;
+        margin-top: 1.75rem;
+        font-size: 0.6875rem;
+        padding: 0.5rem 0.875rem;
         background: var(--status-green-muted);
-        border-radius: 6px;
+        border-radius: 100px;
         display: inline-flex;
         align-self: flex-start;
+        gap: 0.5rem;
+        align-items: center;
+        border: 1px solid rgba(110, 231, 160, 0.2);
+    }
+    
+    .hero-status .status-indicator {
+        width: 6px;
+        height: 6px;
     }
 
     .hero-cta {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.625rem;
         margin-top: 2rem;
     }
@@ -856,57 +876,60 @@ footer p {
     .btn {
         width: 100%;
         justify-content: center;
-        padding: 1rem 1.25rem;
-        font-size: 0.6875rem;
-        min-height: 50px;
-        border-radius: 6px;
+        padding: 0.875rem 1rem;
+        font-size: 0.625rem;
+        min-height: 48px;
+        border-radius: 8px;
     }
     
     .btn-primary {
-        font-weight: 600;
-        letter-spacing: 0.08em;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+    }
+    
+    .btn-secondary {
+        font-weight: 400;
     }
 
     /* ─────────────────────────────────────────────
        Sections — Clear rhythm and separation
     ───────────────────────────────────────────── */
     .section {
-        padding: 3.5rem 1.5rem;
-        border-top: 1px solid var(--border-subtle);
+        padding: 3.25rem 1.5rem;
     }
     
     .section:first-of-type {
-        border-top: none;
+        padding-top: 2.75rem;
     }
 
     .section:nth-of-type(even) {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
         background: var(--bg-section);
-        border-top-color: transparent;
     }
     
     .section-header {
-        margin-bottom: 1.75rem;
+        margin-bottom: 1.5rem;
     }
     
     .section-number {
-        font-size: 0.625rem;
-        opacity: 0.7;
+        font-size: 0.6875rem;
+        color: var(--accent);
         margin-bottom: 0.625rem;
+        letter-spacing: 0.1em;
+        font-weight: 500;
     }
     
     .section-header h2 {
-        font-size: 1.5rem;
-        margin-bottom: 0.375rem;
+        font-size: 1.375rem;
+        margin-bottom: 0.25rem;
         letter-spacing: -0.02em;
     }
     
     .section-header p {
-        font-size: 0.9375rem;
+        font-size: 0.875rem;
         line-height: 1.5;
         color: var(--text-tertiary);
-        max-width: 100%;
     }
 
     /* ─────────────────────────────────────────────
@@ -917,98 +940,108 @@ footer p {
     .expertise-grid,
     .cert-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0.75rem;
     }
     
     .grid-3 {
-        margin-top: 1rem;
+        margin-top: 0.75rem;
     }
 
     /* ─────────────────────────────────────────────
-       Cards — Full-width, balanced padding
+       Cards — Full-width, polished
     ───────────────────────────────────────────── */
     .card {
-        padding: 1.25rem 1.25rem 1.125rem;
-        border-radius: 10px;
+        padding: 1.125rem 1.25rem 1rem;
+        border-radius: 12px;
+        border-color: var(--border-subtle);
     }
     
     .card h3 {
-        font-size: 1.0625rem;
-        margin-bottom: 0.25rem;
+        font-size: 1rem;
+        margin-bottom: 0.125rem;
         letter-spacing: -0.01em;
     }
     
     .card-meta {
         font-size: 0.625rem;
         margin-bottom: 0.625rem;
-        opacity: 0.8;
+        letter-spacing: 0.06em;
+        color: var(--accent);
     }
     
     .card-description {
-        font-size: 0.9375rem;
-        line-height: 1.65;
+        font-size: 0.875rem;
+        line-height: 1.6;
         color: var(--text-secondary);
-        max-width: 100%;
-        margin-bottom: 1rem;
+        margin-bottom: 0.875rem;
     }
     
     .tech-stack {
-        gap: 0.5rem;
+        gap: 0.375rem;
         flex-wrap: wrap;
     }
     
     .tech-badge {
         font-size: 0.625rem;
-        padding: 0.375rem 0.5rem;
-        border-radius: 4px;
+        padding: 0.375rem 0.625rem;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     /* ─────────────────────────────────────────────
        Expertise — Clear skill blocks
     ───────────────────────────────────────────── */
     .expertise-block {
-        padding: 1.25rem;
-        border-radius: 10px;
+        padding: 1.125rem 1.25rem 1rem;
+        border-radius: 12px;
     }
     
     .expertise-block h3 {
-        font-size: 1.0625rem;
-        margin-bottom: 0.375rem;
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
     }
     
     .expertise-block > p {
-        font-size: 0.9375rem;
-        line-height: 1.6;
+        font-size: 0.875rem;
+        line-height: 1.55;
         color: var(--text-tertiary);
-        margin-bottom: 1rem;
-        max-width: 100%;
+        margin-bottom: 0.875rem;
     }
     
     .skill-list {
-        gap: 0.5rem;
+        gap: 0.375rem;
     }
     
     .skill-tag {
         font-size: 0.625rem;
-        padding: 0.375rem 0.5rem;
+        padding: 0.375rem 0.625rem;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     /* ─────────────────────────────────────────────
        Timeline — Professional experience flow
     ───────────────────────────────────────────── */
     .timeline {
-        padding-left: 1rem;
-        margin-left: 0.25rem;
+        padding-left: 1.125rem;
+        margin-left: 0;
+        position: relative;
     }
     
     .timeline::before {
         left: 0;
+        width: 2px;
+        background: linear-gradient(180deg, var(--border-visible) 0%, transparent 100%);
     }
 
     .timeline-item {
-        padding: 1.125rem 1.25rem;
-        border-radius: 10px;
-        margin-bottom: 0.875rem;
+        padding: 1rem 1.125rem;
+        border-radius: 12px;
+        margin-bottom: 0.625rem;
+        position: relative;
     }
     
     .timeline-item:last-child {
@@ -1016,26 +1049,31 @@ footer p {
     }
     
     .timeline-item::before {
-        left: -1rem;
-        width: 6px;
-        height: 6px;
+        left: -1.125rem;
+        width: 10px;
+        height: 10px;
+        transform: translateX(-4px);
+        background: var(--accent);
+        border: 2px solid var(--bg-base);
+        box-shadow: 0 0 0 2px rgba(168, 162, 158, 0.15);
     }
     
     .timeline-item h3 {
-        font-size: 1rem;
-        margin-bottom: 0.25rem;
+        font-size: 0.9375rem;
+        margin-bottom: 0.1875rem;
     }
     
     .timeline-meta {
         font-size: 0.625rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.625rem;
+        color: var(--text-tertiary);
+        letter-spacing: 0.04em;
     }
     
     .timeline-item > p {
-        font-size: 0.9375rem;
-        line-height: 1.6;
+        font-size: 0.875rem;
+        line-height: 1.55;
         color: var(--text-secondary);
-        max-width: 100%;
     }
     
     /* ─────────────────────────────────────────────
@@ -1044,9 +1082,12 @@ footer p {
     .cert-heading {
         font-size: 0.6875rem;
         margin-top: 2rem;
-        margin-bottom: 0.875rem;
+        margin-bottom: 0.75rem;
         padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-visible);
+        color: var(--text-secondary);
+        letter-spacing: 0.1em;
+        font-weight: 500;
     }
     
     .cert-heading:first-of-type {
@@ -1054,23 +1095,23 @@ footer p {
     }
     
     .cert-item {
-        padding: 1rem 1.125rem;
-        border-radius: 8px;
+        padding: 0.875rem 1rem;
+        border-radius: 10px;
     }
     
     .cert-item h4 {
-        font-size: 0.9375rem;
-        margin-bottom: 0.125rem;
+        font-size: 0.875rem;
+        margin-bottom: 0.0625rem;
     }
     
     .cert-provider {
-        font-size: 0.625rem;
-        opacity: 0.75;
+        font-size: 0.5625rem;
+        color: var(--text-tertiary);
     }
     
     .cert-footer {
-        margin-top: 0.75rem;
-        gap: 0.75rem;
+        margin-top: 0.625rem;
+        gap: 0.5rem;
         align-items: center;
     }
     
@@ -1080,13 +1121,16 @@ footer p {
     }
     
     .cert-link {
-        padding: 0.375rem 0.625rem;
+        padding: 0.4375rem 0.625rem;
         font-size: 0.5625rem;
         margin-left: auto;
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
     }
     
     .progress-track {
-        height: 4px;
+        height: 3px;
         border-radius: 2px;
     }
 
@@ -1094,15 +1138,14 @@ footer p {
        Contact — Conversion-focused section
     ───────────────────────────────────────────── */
     .contact-section {
-        padding: 4rem 1.5rem 5rem;
+        padding: 3rem 1.5rem 2.5rem;
         text-align: center;
-        border-top: 1px solid var(--border-subtle);
-        background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-section) 100%);
+        background: var(--bg-section);
     }
     
     .contact-section .section-header {
-        max-width: 100%;
-        margin-bottom: 2rem;
+        max-width: 300px;
+        margin: 0 auto 2.25rem;
     }
     
     .contact-section .section-number {
@@ -1116,46 +1159,50 @@ footer p {
     
     .contact-section .section-header p {
         font-size: 0.9375rem;
-        color: var(--text-tertiary);
-        max-width: 100%;
-        margin: 0 auto;
+        color: var(--text-secondary);
         text-align: center;
     }
     
     .contact-links {
-        flex-direction: column;
-        gap: 0.75rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.625rem;
         width: 100%;
-        max-width: 320px;
+        max-width: 300px;
         margin: 0 auto;
     }
     
     .contact-links .btn {
-        min-height: 52px;
+        min-height: 50px;
     }
     
     .contact-links .btn-primary {
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.5rem;
+        min-height: 54px;
+        font-size: 0.6875rem;
+        font-weight: 500;
     }
     
     .contact-links .btn-secondary {
         min-height: 46px;
         background: transparent;
         border-color: var(--border-visible);
+        font-size: 0.625rem;
     }
 
     /* ─────────────────────────────────────────────
        Footer — Minimal, unobtrusive
     ───────────────────────────────────────────── */
     footer {
-        padding: 1.25rem 1.5rem 4.5rem;
-        border-top: none;
-        background: var(--bg-section);
+        padding: 1rem 1.5rem calc(0.75rem + 48px);
+        border-top: 1px solid var(--border-subtle);
+        background: var(--bg-base);
     }
     
     footer p {
-        font-size: 0.625rem;
-        opacity: 0.6;
+        font-size: 0.6875rem;
+        color: var(--text-tertiary);
+        letter-spacing: 0.02em;
     }
 }
 
@@ -1165,32 +1212,44 @@ footer p {
 @media (max-width: 480px) {
     .hero {
         padding: 0 1.25rem;
-        padding-top: 2rem;
-        padding-bottom: 1.5rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 2.125rem;
     }
 
     .hero-tagline {
-        font-size: 1rem;
+        font-size: 0.9375rem;
+        margin-bottom: 1.5rem;
     }
     
     .hero-intro {
         font-size: 0.9375rem;
     }
     
+    .hero-intro + .hero-intro {
+        font-size: 0.875rem;
+    }
+    
     .hero-status {
-        font-size: 0.6875rem;
+        font-size: 0.625rem;
+        padding: 0.4375rem 0.75rem;
     }
     
     .hero-cta {
         margin-top: 1.75rem;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
     }
 
     .section {
-        padding: 3rem 1.25rem;
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .section:first-of-type {
+        padding-top: 2rem;
     }
     
     .section:nth-of-type(even) {
@@ -1198,47 +1257,90 @@ footer p {
         padding-right: 1.25rem;
     }
     
+    .section-header {
+        margin-bottom: 1.25rem;
+    }
+    
     .section-header h2 {
-        font-size: 1.375rem;
+        font-size: 1.25rem;
     }
     
     .section-header p {
-        font-size: 0.875rem;
+        font-size: 0.8125rem;
     }
     
     .card,
     .expertise-block {
-        padding: 1.125rem;
+        padding: 1rem 1.125rem 0.875rem;
     }
     
     .card h3,
     .expertise-block h3 {
-        font-size: 1rem;
+        font-size: 0.9375rem;
     }
     
     .card-description,
     .expertise-block > p,
     .timeline-item > p {
-        font-size: 0.875rem;
+        font-size: 0.8125rem;
     }
     
     .timeline-item {
-        padding: 1rem 1.125rem;
-    }
-    
-    .cert-item {
         padding: 0.875rem 1rem;
     }
     
+    .timeline-item h3 {
+        font-size: 0.875rem;
+    }
+    
+    .cert-item {
+        padding: 0.75rem 0.875rem;
+    }
+    
+    .cert-item h4 {
+        font-size: 0.8125rem;
+    }
+    
     .contact-section {
-        padding: 3.5rem 1.25rem 4.5rem;
+        padding: 3rem 1.25rem 3.5rem;
+    }
+    
+    .contact-section .section-header {
+        max-width: 100%;
     }
     
     .contact-section .section-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.375rem;
     }
     
     .contact-links {
         max-width: 100%;
+    }
+    
+    footer {
+        padding: 1rem 1.25rem 4.5rem;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   Extra small mobile — iPhone SE, etc.
+───────────────────────────────────────────── */
+@media (max-width: 375px) {
+    h1 {
+        font-size: 1.875rem;
+    }
+    
+    .hero-tagline {
+        font-size: 0.875rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.125rem;
+    }
+    
+    .card h3,
+    .expertise-block h3,
+    .timeline-item h3 {
+        font-size: 0.875rem;
     }
 }
