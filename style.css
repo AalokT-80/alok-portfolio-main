@@ -747,27 +747,38 @@ footer p {
     }
 }
 
-/* Mobile */
+/* Mobile — True mobile-first design */
 @media (max-width: 768px) {
+    
+    /* ─────────────────────────────────────────────
+       Navigation — Fixed bottom bar
+    ───────────────────────────────────────────── */
     .nav-links {
         position: fixed;
         bottom: 0;
         left: 0;
         right: 0;
-        background: rgba(24, 24, 27, 0.95);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        background: rgba(24, 24, 27, 0.97);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         border-top: 1px solid var(--border-subtle);
-        padding: 0.625rem 0.5rem;
+        padding: 0.5rem 0;
         display: flex;
         justify-content: space-around;
         z-index: 1000;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-links li {
+        flex: 1;
+        text-align: center;
     }
     
     .nav-links a {
-        font-size: 0.5625rem;
-        padding: 0.625rem 0.375rem;
-        text-align: center;
+        font-size: 0.625rem;
+        padding: 0.75rem 0.25rem;
+        display: block;
+        color: var(--text-tertiary);
     }
     
     .nav-links a::after {
@@ -780,14 +791,21 @@ footer p {
 
     main {
         padding-top: 52px;
+        padding-bottom: 60px; /* Space for bottom nav */
     }
 
-    /* Hero - Bold and attention-grabbing on mobile */
+    /* ─────────────────────────────────────────────
+       Hero — Bold, confident, immediate impact
+    ───────────────────────────────────────────── */
     .hero {
-        min-height: calc(100vh - 52px - 60px); /* Account for nav and bottom bar */
-        padding: 2.5rem 1.25rem 2rem;
-        justify-content: flex-start;
-        padding-top: 3.5rem;
+        min-height: calc(100vh - 112px);
+        min-height: calc(100svh - 112px); /* Safe viewport height */
+        padding: 0 1.5rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     
     .hero-content {
@@ -795,128 +813,175 @@ footer p {
     }
 
     h1 {
-        font-size: 2rem;
-        margin-bottom: 0.375rem;
-        letter-spacing: -0.03em;
+        font-size: 2.25rem;
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.035em;
+        line-height: 1.1;
     }
 
     .hero-tagline {
-        font-size: 1.125rem;
-        margin-bottom: 1.25rem;
+        font-size: 1.0625rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
     }
     
     .hero-intro {
-        font-size: 0.9375rem;
-        line-height: 1.8;
-        margin-bottom: 0.75rem;
-        max-width: 32ch; /* Limit line length for readability */
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+        color: var(--text-secondary);
+        max-width: 100%;
+    }
+    
+    .hero-intro + .hero-intro {
+        margin-bottom: 0;
     }
     
     .hero-status {
-        margin-top: 1.25rem;
-        font-size: 0.8125rem;
-        padding: 0.625rem 0;
+        margin-top: 1.5rem;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        background: var(--status-green-muted);
+        border-radius: 6px;
+        display: inline-flex;
+        align-self: flex-start;
     }
 
-    /* CTAs - Thumb-friendly and prominent */
     .hero-cta {
         flex-direction: column;
-        gap: 0.75rem;
-        margin-top: 1.75rem;
+        gap: 0.625rem;
+        margin-top: 2rem;
     }
 
     .btn {
         width: 100%;
         justify-content: center;
-        padding: 1rem 1.5rem;
-        font-size: 0.75rem;
-        min-height: 52px; /* Thumb-friendly tap target */
+        padding: 1rem 1.25rem;
+        font-size: 0.6875rem;
+        min-height: 50px;
+        border-radius: 6px;
     }
     
     .btn-primary {
-        box-shadow: 0 4px 12px rgba(250, 250, 250, 0.15);
+        font-weight: 600;
+        letter-spacing: 0.08em;
     }
 
-    /* Sections - Consistent vertical rhythm */
+    /* ─────────────────────────────────────────────
+       Sections — Clear rhythm and separation
+    ───────────────────────────────────────────── */
     .section {
-        padding: 3rem 1.25rem;
+        padding: 3.5rem 1.5rem;
+        border-top: 1px solid var(--border-subtle);
+    }
+    
+    .section:first-of-type {
+        border-top: none;
     }
 
     .section:nth-of-type(even) {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        background: var(--bg-section);
+        border-top-color: transparent;
     }
     
     .section-header {
-        margin-bottom: 2rem;
+        margin-bottom: 1.75rem;
+    }
+    
+    .section-number {
+        font-size: 0.625rem;
+        opacity: 0.7;
+        margin-bottom: 0.625rem;
     }
     
     .section-header h2 {
-        font-size: 1.375rem;
-        margin-bottom: 0.25rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.375rem;
+        letter-spacing: -0.02em;
     }
     
     .section-header p {
-        font-size: 0.875rem;
-        line-height: 1.6;
-        max-width: 30ch;
+        font-size: 0.9375rem;
+        line-height: 1.5;
+        color: var(--text-tertiary);
+        max-width: 100%;
     }
 
+    /* ─────────────────────────────────────────────
+       Grids — Single column, proper spacing
+    ───────────────────────────────────────────── */
     .grid-2,
     .grid-3,
     .expertise-grid,
     .cert-grid {
         grid-template-columns: 1fr;
-        gap: 0.875rem;
+        gap: 1rem;
     }
     
     .grid-3 {
-        margin-top: 0.875rem;
+        margin-top: 1rem;
     }
 
-    /* Cards - Better mobile spacing */
-    .card,
-    .expertise-block,
-    .cert-item,
-    .timeline-item {
-        padding: 1.25rem;
+    /* ─────────────────────────────────────────────
+       Cards — Full-width, balanced padding
+    ───────────────────────────────────────────── */
+    .card {
+        padding: 1.25rem 1.25rem 1.125rem;
+        border-radius: 10px;
     }
     
     .card h3 {
-        font-size: 1rem;
-        margin-bottom: 0.375rem;
-    }
-    
-    .card-description {
-        font-size: 0.875rem;
-        line-height: 1.75;
-        max-width: 36ch;
+        font-size: 1.0625rem;
+        margin-bottom: 0.25rem;
+        letter-spacing: -0.01em;
     }
     
     .card-meta {
         font-size: 0.625rem;
         margin-bottom: 0.625rem;
+        opacity: 0.8;
     }
     
-    /* Tech badges - Larger tap targets */
+    .card-description {
+        font-size: 0.9375rem;
+        line-height: 1.65;
+        color: var(--text-secondary);
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    
     .tech-stack {
         gap: 0.5rem;
+        flex-wrap: wrap;
     }
     
     .tech-badge {
         font-size: 0.625rem;
-        padding: 0.375rem 0.625rem;
+        padding: 0.375rem 0.5rem;
+        border-radius: 4px;
     }
 
-    /* Expertise blocks */
+    /* ─────────────────────────────────────────────
+       Expertise — Clear skill blocks
+    ───────────────────────────────────────────── */
+    .expertise-block {
+        padding: 1.25rem;
+        border-radius: 10px;
+    }
+    
     .expertise-block h3 {
-        font-size: 1rem;
+        font-size: 1.0625rem;
+        margin-bottom: 0.375rem;
     }
     
     .expertise-block > p {
-        font-size: 0.875rem;
-        line-height: 1.7;
-        max-width: 34ch;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-tertiary);
+        margin-bottom: 1rem;
+        max-width: 100%;
     }
     
     .skill-list {
@@ -925,79 +990,143 @@ footer p {
     
     .skill-tag {
         font-size: 0.625rem;
-        padding: 0.375rem 0.625rem;
+        padding: 0.375rem 0.5rem;
     }
 
-    /* Timeline - Clean vertical flow */
+    /* ─────────────────────────────────────────────
+       Timeline — Professional experience flow
+    ───────────────────────────────────────────── */
     .timeline {
-        padding-left: 1.25rem;
+        padding-left: 1rem;
+        margin-left: 0.25rem;
+    }
+    
+    .timeline::before {
+        left: 0;
     }
 
+    .timeline-item {
+        padding: 1.125rem 1.25rem;
+        border-radius: 10px;
+        margin-bottom: 0.875rem;
+    }
+    
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+    
     .timeline-item::before {
-        left: -1.25rem;
+        left: -1rem;
+        width: 6px;
+        height: 6px;
     }
     
     .timeline-item h3 {
-        font-size: 0.9375rem;
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .timeline-meta {
+        font-size: 0.625rem;
+        margin-bottom: 0.5rem;
     }
     
     .timeline-item > p {
-        font-size: 0.875rem;
-        line-height: 1.75;
-        max-width: 34ch;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 100%;
     }
     
-    /* Certifications */
+    /* ─────────────────────────────────────────────
+       Certifications — Scannable credentials
+    ───────────────────────────────────────────── */
     .cert-heading {
         font-size: 0.6875rem;
-        margin-top: 1.75rem;
-        margin-bottom: 0.75rem;
+        margin-top: 2rem;
+        margin-bottom: 0.875rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--border-subtle);
     }
     
     .cert-heading:first-of-type {
         margin-top: 0;
     }
     
+    .cert-item {
+        padding: 1rem 1.125rem;
+        border-radius: 8px;
+    }
+    
     .cert-item h4 {
-        font-size: 0.875rem;
+        font-size: 0.9375rem;
+        margin-bottom: 0.125rem;
     }
     
     .cert-provider {
         font-size: 0.625rem;
+        opacity: 0.75;
     }
     
     .cert-footer {
-        flex-wrap: wrap;
-        gap: 0.625rem;
+        margin-top: 0.75rem;
+        gap: 0.75rem;
+        align-items: center;
+    }
+    
+    .cert-badge {
+        font-size: 0.5625rem;
+        padding: 0.25rem 0.5rem;
     }
     
     .cert-link {
-        padding: 0.375rem 0.75rem;
+        padding: 0.375rem 0.625rem;
         font-size: 0.5625rem;
+        margin-left: auto;
+    }
+    
+    .progress-track {
+        height: 4px;
+        border-radius: 2px;
     }
 
-    /* Contact section */
+    /* ─────────────────────────────────────────────
+       Contact — Conversion-focused section
+    ───────────────────────────────────────────── */
     .contact-section {
-        padding: 3.5rem 1.25rem 5rem;
+        padding: 4rem 1.5rem 5rem;
+        text-align: center;
+        border-top: 1px solid var(--border-subtle);
+        background: linear-gradient(180deg, var(--bg-base) 0%, var(--bg-section) 100%);
     }
     
     .contact-section .section-header {
         max-width: 100%;
-        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .contact-section .section-number {
+        margin-bottom: 0.75rem;
+    }
+    
+    .contact-section .section-header h2 {
+        font-size: 1.625rem;
+        margin-bottom: 0.5rem;
     }
     
     .contact-section .section-header p {
+        font-size: 0.9375rem;
+        color: var(--text-tertiary);
         max-width: 100%;
+        margin: 0 auto;
         text-align: center;
-        margin-left: auto;
-        margin-right: auto;
     }
     
     .contact-links {
         flex-direction: column;
         gap: 0.75rem;
         width: 100%;
-        max-width: 280px;
+        max-width: 320px;
         margin: 0 auto;
     }
     
@@ -1005,29 +1134,43 @@ footer p {
         min-height: 52px;
     }
     
+    .contact-links .btn-primary {
+        margin-bottom: 0.25rem;
+    }
+    
+    .contact-links .btn-secondary {
+        min-height: 46px;
+        background: transparent;
+        border-color: var(--border-visible);
+    }
+
+    /* ─────────────────────────────────────────────
+       Footer — Minimal, unobtrusive
+    ───────────────────────────────────────────── */
     footer {
-        padding: 1.5rem 1.25rem 5rem;
+        padding: 1.25rem 1.5rem 4.5rem;
+        border-top: none;
+        background: var(--bg-section);
     }
     
     footer p {
-        font-size: 0.5625rem;
+        font-size: 0.625rem;
+        opacity: 0.6;
     }
 }
 
-/* Small mobile */
+/* ─────────────────────────────────────────────
+   Small mobile — Fine-tuned for compact screens
+───────────────────────────────────────────── */
 @media (max-width: 480px) {
     .hero {
-        padding: 2.5rem 1rem 1.75rem;
-        padding-top: 3rem;
-    }
-
-    .section,
-    .section:nth-of-type(even) {
-        padding: 2.5rem 1rem;
+        padding: 0 1.25rem;
+        padding-top: 2rem;
+        padding-bottom: 1.5rem;
     }
 
     h1 {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
 
     .hero-tagline {
@@ -1035,23 +1178,64 @@ footer p {
     }
     
     .hero-intro {
-        font-size: 0.875rem;
-        max-width: 28ch;
+        font-size: 0.9375rem;
+    }
+    
+    .hero-status {
+        font-size: 0.6875rem;
+    }
+    
+    .hero-cta {
+        margin-top: 1.75rem;
+    }
+
+    .section {
+        padding: 3rem 1.25rem;
+    }
+    
+    .section:nth-of-type(even) {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
     
     .section-header h2 {
-        font-size: 1.25rem;
+        font-size: 1.375rem;
+    }
+    
+    .section-header p {
+        font-size: 0.875rem;
     }
     
     .card,
-    .expertise-block,
-    .cert-item,
+    .expertise-block {
+        padding: 1.125rem;
+    }
+    
+    .card h3,
+    .expertise-block h3 {
+        font-size: 1rem;
+    }
+    
+    .card-description,
+    .expertise-block > p,
+    .timeline-item > p {
+        font-size: 0.875rem;
+    }
+    
     .timeline-item {
-        padding: 1rem;
+        padding: 1rem 1.125rem;
+    }
+    
+    .cert-item {
+        padding: 0.875rem 1rem;
     }
     
     .contact-section {
-        padding: 3rem 1rem 5rem;
+        padding: 3.5rem 1.25rem 4.5rem;
+    }
+    
+    .contact-section .section-header h2 {
+        font-size: 1.5rem;
     }
     
     .contact-links {
